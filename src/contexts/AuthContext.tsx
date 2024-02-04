@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { sha256 } from 'hash-wasm';
+import sha256 from 'crypto-js/sha256';
+
 
 interface User {
     email: string;
