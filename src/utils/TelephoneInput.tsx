@@ -20,7 +20,7 @@ export const FunctionalPhoneInput = ({
   const phoneNumberInput2RefRef = useRef<HTMLInputElement>(null);
   const phoneNumberInput3RefRef = useRef<HTMLInputElement>(null);
 
-  const maxLengths = [2, 2, 2, 1];
+  const maxLengths = [3, 3, 4];
 
   const phoneNumberRefs = [
     phoneNumberInput0RefRef,
@@ -93,7 +93,7 @@ export const FunctionalPhoneInput = ({
             ref={phoneNumberInput2RefRef}
             onChange={handlePhoneNumberInput(2)}
             value={phoneNumberInput[2]}
-            placeholder="555"
+            placeholder="5555"
           />
         
         </div>

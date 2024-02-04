@@ -3,5 +3,7 @@ export const isAllNumbers = (str: string) => {
 }
 
 export const isValidPhoneNumber = (str: string) => {
-    return isAllNumbers(str) && str.length == 7
-}
+    const regex = /^(?:\d{10}|\d{3}-\d{3}-\d{4})$/;
+    return regex.test(str);
+  };
+  

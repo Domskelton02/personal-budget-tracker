@@ -54,6 +54,50 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.success-message {
+  color: #155724; /* a dark green color for better readability */
+  background-color: #d4edda; /* a light green background */
+  border-color: #c3e6cb; /* a green border color */
+  padding: .75rem 1.25rem; /* some padding around the text */
+  margin-bottom: 1rem; /* margin at the bottom */
+  border: 1px solid transparent; /* border styling */
+  border-radius: .25rem; /* rounded corners */
+}
+
+.error-message {
+  border: 1px solid black;
+  padding: 2px;
+  color: white;
+  background-color: tomato;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+#phone-input-1 {
+  width: 30px;
+}
+#phone-input-2 {
+  width: 30px;
+}
+#phone-input-3 {
+  width: 30px;
+}
+
+#phone-input-1,
+#phone-input-2,
+#phone-input-3 {
+  text-align: center;
+}
+
+#phone-input-wrap {
+  display: flex;
+  justify-content: space-between;
+  flex: 2;
+  width: 400px;
+}
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

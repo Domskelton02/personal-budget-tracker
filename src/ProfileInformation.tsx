@@ -33,9 +33,8 @@ export const ProfileInformation = ({ userData }: ProfileInformationProps) => {
     );
   }
 
-  const { email, firstName, lastName, phone, city } = userData;
-  const formattedPhone = `${phone.slice(0, 3)}-${phone.slice(3, 7)}-${phone.slice(7, 0)}-${phone.slice(10)}`;
-
+  const { email, firstName, lastName, phone, city, state, username, zipCode } = userData; // Destructure username and zipCode from userData
+  const formattedPhone = `${phone.slice(0, 3)}-${phone.slice(3, 6)}-${phone.slice(6)}`;
   const cityValue = allCities.includes(city) ? city : 'Invalid city';
 
   return (
@@ -47,8 +46,11 @@ export const ProfileInformation = ({ userData }: ProfileInformationProps) => {
         <InfoRow label="Email" value={email} />
         <InfoRow label="First Name" value={firstName} />
         <InfoRow label="Last Name" value={lastName} />
-        <InfoRow label="State" value={cityValue} />
+        <InfoRow label="City" value={cityValue} />
+        <InfoRow label="State" value={state} />
         <InfoRow label="Phone" value={formattedPhone} />
+        <InfoRow label="Username" value={username} />
+        <InfoRow label="Zip Code" value={zipCode} />
       </div>
     </>
   );

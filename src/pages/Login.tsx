@@ -1,27 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { useAuth } from '../contexts/AuthContext'; // Import the AuthContext
 
 const LoginPage: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
-    const login = async (email: string, password: string) => {
-        const response = await fetch('/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, password })
-        });
-
-        if (!response.ok) {
-            throw new Error('Login failed');
-        }
-
-        return response.json();
-    }
+    const { login } = useAuth(); // Get the login function from the AuthContext
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -34,9 +20,9 @@ const LoginPage: React.FC = () => {
         try {
             await login(email, password);
             toast.success('Logged in successfully');
-            navigate('/dashboard'); // Redirect to dashboard or home page
+            navigate('/');
         } catch (error) {
-            toast.error('Failed to log in');
+            toast.error(error.message || 'Failed to log in');
         }
     };
 

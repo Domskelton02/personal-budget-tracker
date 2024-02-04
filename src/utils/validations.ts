@@ -9,3 +9,7 @@ export function isEmailValid(emailAddress: string) {
 export const isStateValid = (state: string) => {
     return stateAcronyms.includes(state.toUpperCase())
 }
+
+export const isZipCodeValid = (zipCode: string): boolean => {
+    return /^\d{5}(-\d{4})?$/.test(zipCode);
+};
