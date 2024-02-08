@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "username": "jonnyappleseed",
-      "email": "jonny@apple.com",
-      "password": "hashed_password",
-      "created_at": "2024-01-01T00:00:00Z"
-    },
-    {
       "id": "4fbd",
       "email": "adltech02@gmail.com",
       "firstName": "Dominick",
@@ -48,5 +41,51 @@
       "period_end": "2024-01-31"
     }
   ],
-  "login": []
+  "login": [
+    {
+      "id": "afe3",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "ca78",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "f03c",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "8bc3",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "a07e",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "2f21",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "1b9a",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "623a",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "89da",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    }
+  ]
 }

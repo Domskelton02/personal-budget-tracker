@@ -29,7 +29,6 @@ export const ExpensesProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Custom hook to use the ExpensesContext
 export const useExpensesContext = () => {
   const context = useContext(ExpensesContext);
   if (!context) {

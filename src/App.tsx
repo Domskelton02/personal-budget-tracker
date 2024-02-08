@@ -14,47 +14,72 @@ import PrivateRoute from './components/PrivateRoute';
 import './index.css';
 
 function App() {
-  // Logic to check if the user is authenticated
-  // Replace with actual authentication logic
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 
   return (
-<AuthProvider>
-  <ExpensesProvider>
-    <IncomeProvider>
-      <BudgetPlanningProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/home" element={
-              <PrivateRoute isAuthenticated={isAuthenticated}>
-                <HomePage />
-              </PrivateRoute>
-            } />
-            < Route path="/" element={<LoginPage />} />
-            <Route path="/income" element={
-              <PrivateRoute isAuthenticated={isAuthenticated}>
-                <IncomePage />
-              </PrivateRoute>
-            } />
-            <Route path="/expenses" element={
-              <PrivateRoute isAuthenticated={isAuthenticated}>
-                <ExpensesPage />
-              </PrivateRoute>
-            } />
-            <Route path="/budget-planning" element={
-              <PrivateRoute isAuthenticated={isAuthenticated}>
-                <BudgetPlanningPage />
-              </PrivateRoute>
-            } />
-          </Routes>
-          <Toaster />
-        </BrowserRouter>
-      </BudgetPlanningProvider>
-    </IncomeProvider>
-  </ExpensesProvider>
-</AuthProvider>
+    <AuthProvider>
+      <ExpensesProvider>
+        <IncomeProvider>
+          <BudgetPlanningProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route
+                  path="/"
+                  element={
+                    isAuthenticated ? (
+                      <PrivateRoute isAuthenticated={isAuthenticated}>
+                        <HomePage />
+                      </PrivateRoute>
+                    ) : (
+                      <Navigate to="/login" />
+                    )
+                  }
+                />
+                <Route
+                  path="/income"
+                  element={
+                    isAuthenticated ? (
+                      <PrivateRoute isAuthenticated={isAuthenticated}>
+                        <IncomePage />
+                      </PrivateRoute>
+                    ) : (
+                      <Navigate to="/login" />
+                    )
+                  }
+                />
+                <Route
+                  path="/expenses"
+                  element={
+                    isAuthenticated ? (
+                      <PrivateRoute isAuthenticated={isAuthenticated}>
+                        <ExpensesPage />
+                      </PrivateRoute>
+                    ) : (
+                      <Navigate to="/login" />
+                    )
+                  }
+                />
+                <Route
+                  path="/budget-planning"
+                  element={
+                    isAuthenticated ? (
+                      <PrivateRoute isAuthenticated={isAuthenticated}>
+                        <BudgetPlanningPage />
+                      </PrivateRoute>
+                    ) : (
+                      <Navigate to="/login" />
+                    )
+                  }
+                />
+              </Routes>
+              <Toaster />
+            </BrowserRouter>
+          </BudgetPlanningProvider>
+        </IncomeProvider>
+      </ExpensesProvider>
+    </AuthProvider>
   );
 }
 

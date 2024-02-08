@@ -7,7 +7,6 @@ interface PrivateRouteProps {
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
     const isAuthenticated = () => {
-        // Replace this with your actual authentication logic
         return true;
     }
 

@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { Income as IncomeType } from '../types'; // Make sure this import path matches your project structure
+import { Income as IncomeType } from '../types';
 
-// Dummy initial data
 const initialIncomes: IncomeType[] = [
-    // Populate with initial data if needed
 ];
 
 const IncomePage = () => {
     const [incomes, setIncomes] = useState<IncomeType[]>(initialIncomes);
     const [newIncome, setNewIncome] = useState<IncomeType>({
-        id: Date.now(), // Temporary id generation, you might want to handle this differently
-        userId: 1, // Placeholder user ID
+        id: Date.now(),
+        userId: 1,
         source: '',
         amount: 0,
         date: '',
@@ -26,8 +24,8 @@ const IncomePage = () => {
         e.preventDefault();
         setIncomes([...incomes, newIncome]);
         setNewIncome({
-            id: Date.now(), // Resetting the form with a new temp id
-            userId: 1, // Placeholder user ID
+            id: Date.now(),
+            userId: 1,
             source: '',
             amount: 0,
             date: '',

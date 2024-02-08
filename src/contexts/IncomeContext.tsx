@@ -4,7 +4,6 @@ import { Income as IncomeType } from '../types'; // Adjust the path as necessary
 type IncomeContextType = {
     incomes: IncomeType[];
     addIncome: (income: IncomeType) => void;
-    // You can add more actions/functions as needed
 };
 
 const IncomeContext = createContext<IncomeContextType | undefined>(undefined);

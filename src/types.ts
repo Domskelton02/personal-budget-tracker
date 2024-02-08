@@ -12,6 +12,7 @@ export type UserInformation = {
     createdAt: string;
 };
 
+
 // Represents a category within a user's budget
 export type BudgetCategory = {
     id: number; // Unique identifier for the category

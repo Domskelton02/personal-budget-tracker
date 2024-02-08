@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Expense } from '../types'; // Adjust the import based on your actual type definitions
-import { useExpensesContext } from '../contexts/ExpensesContext'; // Adjust this as well if needed
+import { Expense } from '../types';
+import { useExpensesContext } from '../contexts/ExpensesContext';
 
 const ExpensesPage = () => {
   const { expenses, addExpense, removeExpense } = useExpensesContext();
   const [newExpense, setNewExpense] = useState('');
 
-  // Function to handle the form submission
   const handleAddExpense = (e) => {
     e.preventDefault();
     addExpense(newExpense);
-    setNewExpense(''); // Reset the input after adding
+    setNewExpense('');
   };
 
   return (

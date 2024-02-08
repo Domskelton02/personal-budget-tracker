@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { useAuth } from '../contexts/AuthContext'; // Import the AuthContext
+import { useAuth } from '../hooks/useAuth';
 
 const LoginPage: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const { login } = useAuth(); // Get the login function from the AuthContext
+    const { login } = useAuth();
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -22,16 +22,37 @@ const LoginPage: React.FC = () => {
             toast.success('Logged in successfully');
             navigate('/');
         } catch (error) {
-            toast.error(error.message || 'Failed to log in');
+            toast.error((error as Error).message || 'Failed to log in');
         }
     };
 
     return (
-        <div>
-            <form onSubmit={handleLogin}>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-                <button type="submit">Login</button>
+        <div className="login-container"> {}
+            <h2>Login</h2> {}
+            <form onSubmit={handleLogin} className="login-form"> {}
+                <div className="form-group"> {}
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email"
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Enter your password"
+                        required
+                    />
+                </div>
+                <button type="submit" className="login-button">Login</button> {}
             </form>
             <p>Don't have an account? <Link to="/register">Register here</Link></p>
         </div>

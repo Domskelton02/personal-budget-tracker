@@ -12,7 +12,7 @@ export const BudgetCategory: React.FC<Props> = ({ category }) => {
   return (
     <div>
       <span>{category.name}</span>
-      {/* Display other category details here */}
+      {}
       <button onClick={() => editCategory(category)}>Edit</button>
       <button onClick={() => deleteCategory(category.id)}>Delete</button>
     </div>

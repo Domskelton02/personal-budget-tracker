@@ -1,4 +1,3 @@
-// BudgetPlanningService.ts
 import { BudgetCategory } from '../types';
 
 const BASE_URL = 'http://localhost:3000';
