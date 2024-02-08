@@ -26,9 +26,9 @@
   ],
   "categories": [
     {
-      "id": "1",
-      "name": "Groceries",
-      "user_id": 1
+      "id": 1707401730178,
+      "budgetedAmount": 0,
+      "userId": 1
     }
   ],
   "budgets": [
@@ -164,6 +164,11 @@
     },
     {
       "id": "b0e5",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "d6de",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     }
