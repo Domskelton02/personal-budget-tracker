@@ -1,33 +1,124 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 import { Expense } from '../types';
 
 type ExpensesContextType = {
   expenses: Expense[];
-  addExpense: (expense: Expense) => void;
-  updateExpense: (updatedExpense: Expense) => void; // New function for updating an expense
-  removeExpense: (id: number) => void;
-  isLoading: boolean; // New state for loading status
-  error: string | null; // New state for handling errors
+  addExpense: (expense: Expense) => Promise<void>;
+  updateExpense: (updatedExpense: Expense) => Promise<void>;
+  removeExpense: (id: number) => Promise<void>;
+  isLoading: boolean;
+  error: string | null;
 };
 
-// Create the context with extended functionalities
 const ExpensesContext = createContext<ExpensesContextType | undefined>(undefined);
 
 export const ExpensesProvider = ({ children }: { children: ReactNode }) => {
   const [expenses, setExpenses] = useState<Expense[]>([]);
-  const [isLoading, setIsLoading] = useState(false); // Tracks loading state
-  const [error, setError] = useState<string | null>(null); // Tracks error state
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const addExpense = (expense: Expense) => {
-    setExpenses((prevExpenses) => [...prevExpenses, expense]);
+  useEffect(() => {
+    let isMounted = true;
+    setIsLoading(true);
+
+    fetch('http://localhost:3000/expenses')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch expenses.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (isMounted) {
+          setExpenses(data);
+        }
+      })
+      .catch(err => {
+        if (isMounted) {
+          setError(err.message);
+        }
+      })
+      .finally(() => {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const addExpense = async (expense: Expense) => {
+    try {
+      const response = await fetch('http://localhost:3000/expenses', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(expense),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to add expense.');
+      }
+      const newExpense = await response.json();
+      setExpenses(prevExpenses => [...prevExpenses, newExpense]);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        // Handle cases where the thrown object is not an Error instance
+        setError('An unknown error occurred');
+      }
+    }
+    
   };
 
-  const updateExpense = (updatedExpense: Expense) => {
-    setExpenses((prevExpenses) => prevExpenses.map((expense) => expense.id === updatedExpense.id ? updatedExpense : expense));
+  const updateExpense = async (updatedExpense: Expense) => {
+    try {
+      const response = await fetch(`http://localhost:3000/expenses/${updatedExpense.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedExpense),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to update expense.');
+      }
+      const newExpense = await response.json();
+      setExpenses(prevExpenses =>
+        prevExpenses.map(expense => (expense.id === newExpense.id ? newExpense : expense)),
+      );
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        // Handle cases where the thrown object is not an Error instance
+        setError('An unknown error occurred');
+      }
+    }
+    
   };
 
-  const removeExpense = (id: number) => {
-    setExpenses((prevExpenses) => prevExpenses.filter((expense) => expense.id !== id));
+  const removeExpense = async (id: number) => {
+    try {
+      const response = await fetch(`http://localhost:3000/expenses/${id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error('Failed to remove expense.');
+      }
+      setExpenses(prevExpenses => prevExpenses.filter(expense => expense.id !== id));
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        // Handle cases where the thrown object is not an Error instance
+        setError('An unknown error occurred');
+      }
+    }
+    
   };
 
   return (

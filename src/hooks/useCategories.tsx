@@ -1,4 +1,3 @@
-// Custom hook to use the CategoriesContext
 export const useCategories = () => {
     const context = useContext(CategoriesContext);
     if (context === undefined) {

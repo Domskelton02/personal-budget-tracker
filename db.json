@@ -13,6 +13,14 @@
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     }
   ],
+  "incomes": [
+    {
+      "id": "1",
+      "user_id": 1,
+      "amount": 5000,
+      "date": "2024-01-01T10:00:00Z"
+    }
+  ],
   "transactions": [
     {
       "id": "1",
@@ -42,84 +50,165 @@
       "period_end": "2024-01-31"
     }
   ],
+  "expenses": [],
   "login": [
     {
-      "id": "3ef3",
+      "id": "c676",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "3282",
+      "id": "51c3",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "7709",
+      "id": "7369",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "e0f8",
+      "id": "682c",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "7d52",
+      "id": "a69a",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "5c36",
+      "id": "6747",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "0d14",
+      "id": "e4c5",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "defa",
+      "id": "1900",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "a47a",
+      "id": "8579",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "fee1",
+      "id": "e0d0",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "4ac7",
+      "id": "c3fc",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "4eec",
+      "id": "a9d6",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "6c93",
+      "id": "36c9",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "2163",
+      "id": "97ab",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "4e43",
+      "id": "f51c",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     },
     {
-      "id": "2426",
+      "id": "66b0",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "b7f3",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "d98f",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "ad5b",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "3740",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "8171",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "d0ea",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "93e6",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "312f",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "6dba",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "1e88",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "6d11",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "c2b5",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "a2e0",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "c2ce",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "eb36",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "947c",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     }
