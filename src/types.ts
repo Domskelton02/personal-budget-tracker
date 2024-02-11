@@ -21,6 +21,9 @@ export type BudgetCategory = {
     userId: number; // ID of the user to whom the category belongs
 };
 
+// NewBudgetCategory type for creating a category, which does not include an 'id'
+export type NewBudgetCategory = Omit<BudgetCategory, 'id'>;
+
 // Represents an expense recorded by a user
 export type Expense = {
     id: number; // Unique identifier for the expense

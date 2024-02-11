@@ -1,4 +1,5 @@
 import { BudgetCategory } from '../types';
+import { NewBudgetCategory } from '../types';
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -11,19 +12,20 @@ export const BudgetPlanningService = {
     return response.json();
   },
 
-  createCategory: async (category: BudgetCategory): Promise<BudgetCategory> => {
+  createCategory: async (newCategoryData: NewBudgetCategory): Promise<BudgetCategory> => {
     const response = await fetch(`${BASE_URL}/categories`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(category),
+      body: JSON.stringify(newCategoryData),
     });
     if (!response.ok) {
       throw new Error('Error creating category');
     }
     return response.json();
   },
+  
 
   updateCategory: async (category: BudgetCategory): Promise<BudgetCategory> => {
     const response = await fetch(`${BASE_URL}/categories/${category.id}`, {

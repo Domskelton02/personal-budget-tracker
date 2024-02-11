@@ -1,8 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
 import { ExpensesProvider } from './contexts/ExpensesContext';
 import { IncomeProvider } from './contexts/IncomeContext';
 import { BudgetPlanningProvider } from './contexts/BudgetPlanningContext';
-import { AuthProvider } from './contexts/AuthContext';
+import { CategoriesProvider } from './contexts/CategoriesContext'; // Make sure this is correctly imported
 import { Toaster } from 'react-hot-toast';
 import LoginPage from './pages/Login';
 import RegisterPage from './pages/Register';
@@ -14,68 +15,31 @@ import PrivateRoute from './components/PrivateRoute';
 import './index.css';
 
 function App() {
-  const isAuthenticated = true;
+  const isAuthenticated = true; // This should be dynamically set based on the logged-in user state
+
+  // Wrap your routes with PrivateRoute where needed
+  const privateRoute = (children) => (
+    isAuthenticated ? children : <Navigate to="/login" />
+  );
 
   return (
     <AuthProvider>
       <ExpensesProvider>
         <IncomeProvider>
           <BudgetPlanningProvider>
-            <BrowserRouter>
-              <Routes>
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route
-                  path="/"
-                  element={
-                    isAuthenticated ? (
-                      <PrivateRoute isAuthenticated={isAuthenticated}>
-                        <HomePage />
-                      </PrivateRoute>
-                    ) : (
-                      <Navigate to="/login" />
-                    )
-                  }
-                />
-                <Route
-                  path="/income"
-                  element={
-                    isAuthenticated ? (
-                      <PrivateRoute isAuthenticated={isAuthenticated}>
-                        <IncomePage />
-                      </PrivateRoute>
-                    ) : (
-                      <Navigate to="/login" />
-                    )
-                  }
-                />
-                <Route
-                  path="/expenses"
-                  element={
-                    isAuthenticated ? (
-                      <PrivateRoute isAuthenticated={isAuthenticated}>
-                        <ExpensesPage />
-                      </PrivateRoute>
-                    ) : (
-                      <Navigate to="/login" />
-                    )
-                  }
-                />
-                <Route
-                  path="/budget-planning"
-                  element={
-                    isAuthenticated ? (
-                      <PrivateRoute isAuthenticated={isAuthenticated}>
-                        <BudgetPlanningPage />
-                      </PrivateRoute>
-                    ) : (
-                      <Navigate to="/login" />
-                    )
-                  }
-                />
-              </Routes>
-              <Toaster />
-            </BrowserRouter>
+            <CategoriesProvider>
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/register" element={<RegisterPage />} />
+                  <Route path="/" element={privateRoute(<HomePage />)} />
+                  <Route path="/income" element={privateRoute(<IncomePage />)} />
+                  <Route path="/expenses" element={privateRoute(<ExpensesPage />)} />
+                  <Route path="/budget-planning" element={privateRoute(<BudgetPlanningPage />)} />
+                </Routes>
+                <Toaster />
+              </BrowserRouter>
+            </CategoriesProvider>
           </BudgetPlanningProvider>
         </IncomeProvider>
       </ExpensesProvider>

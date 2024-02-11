@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
-import { BudgetCategory } from '../types';
+import { BudgetCategory, NewBudgetCategory } from '../types';
 import { BudgetPlanningService } from '../services/BudgetPlanningService';
 
 interface IBudgetPlanningContext {
@@ -7,14 +7,22 @@ interface IBudgetPlanningContext {
   isLoading: boolean;
   error: string | null;
   fetchCategories: () => Promise<void>;
-  addCategory: (category: Omit<BudgetCategory, 'id'>) => Promise<void>;
+  addCategory: (category: NewBudgetCategory) => Promise<void>;
   updateCategory: (category: BudgetCategory) => Promise<void>;
   deleteCategory: (id: number) => Promise<void>;
 }
 
-export const BudgetPlanningContext = createContext<IBudgetPlanningContext | undefined>(undefined);
+export const BudgetPlanningContext = createContext<IBudgetPlanningContext>({
+  categories: [],
+  isLoading: false,
+  error: null,
+  fetchCategories: async () => {},
+  addCategory: async () => {},
+  updateCategory: async () => {},
+  deleteCategory: async () => {},
+});
 
-export const BudgetPlanningProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
+export const BudgetPlanningProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [categories, setCategories] = useState<BudgetCategory[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -33,10 +41,10 @@ export const BudgetPlanningProvider: React.FC<{children: React.ReactNode}> = ({ 
     }
   }, []);
 
-  const addCategory = useCallback(async (category: Omit<BudgetCategory, 'id'>) => {
+  const addCategory = useCallback(async (newCategoryData: NewBudgetCategory) => {
     setIsLoading(true);
     try {
-      const addedCategory = await BudgetPlanningService.createCategory(category);
+      const addedCategory = await BudgetPlanningService.createCategory(newCategoryData);
       setCategories(prev => [...prev, addedCategory]);
       setError(null);
     } catch (error) {
@@ -51,7 +59,9 @@ export const BudgetPlanningProvider: React.FC<{children: React.ReactNode}> = ({ 
     setIsLoading(true);
     try {
       await BudgetPlanningService.updateCategory(updatedCategory);
-      setCategories(prev => prev.map(cat => cat.id === updatedCategory.id ? updatedCategory : cat));
+      setCategories(prevCategories =>
+        prevCategories.map(cat => (cat.id === updatedCategory.id ? updatedCategory : cat))
+      );
       setError(null);
     } catch (error) {
       console.error(error);
@@ -60,12 +70,12 @@ export const BudgetPlanningProvider: React.FC<{children: React.ReactNode}> = ({ 
       setIsLoading(false);
     }
   }, []);
-
+  
   const deleteCategory = useCallback(async (id: number) => {
     setIsLoading(true);
     try {
       await BudgetPlanningService.deleteCategory(id);
-      setCategories(prev => prev.filter(cat => cat.id !== id));
+      setCategories(prevCategories => prevCategories.filter(cat => cat.id !== id));
       setError(null);
     } catch (error) {
       console.error(error);
@@ -80,7 +90,15 @@ export const BudgetPlanningProvider: React.FC<{children: React.ReactNode}> = ({ 
   }, [fetchCategories]);
 
   return (
-    <BudgetPlanningContext.Provider value={{ categories, isLoading, error, fetchCategories, addCategory, updateCategory, deleteCategory }}>
+    <BudgetPlanningContext.Provider value={{
+      categories,
+      isLoading,
+      error,
+      fetchCategories,
+      addCategory,
+      updateCategory,
+      deleteCategory,
+    }}>
       {children}
     </BudgetPlanningContext.Provider>
   );

@@ -1,25 +1,26 @@
 import React, { useState, useContext } from 'react';
 import { BudgetPlanningContext } from '../contexts/BudgetPlanningContext';
-import { BudgetCategory } from '../types';
+import { NewBudgetCategory } from '../types';
+
 export const AddBudgetCategory = () => {
   const [name, setName] = useState('');
   const { addCategory } = useContext(BudgetPlanningContext);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!name.trim()) {
       console.error('Category name is required');
       return;
     }
-    
-    const newCategory: BudgetCategory = {
-      id: Date.now(),
+
+    const newCategory: NewBudgetCategory = {
+      name: name,
       budgetedAmount: 0,
       userId: 1,
     };
 
     try {
-      addCategory(newCategory);
+      await addCategory(newCategory);
       setName('');
     } catch (error) {
       console.error('Failed to add category', error);
