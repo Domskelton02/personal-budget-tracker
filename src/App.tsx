@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AuthProvider from './contexts/AuthProvider';import { ExpensesProvider } from './contexts/ExpensesContext';
+import AuthProvider from './contexts/AuthProvider';
+import { ExpensesProvider } from './contexts/ExpensesContext';
 import { IncomeProvider } from './contexts/IncomeProvider';
 import { BudgetPlanningProvider } from './contexts/BudgetPlanningContext';
 import { CategoriesProvider } from './contexts/CategoriesContext';
 import { Toaster } from 'react-hot-toast';
+import NavBar from './components/NavBar';
 import LoginPage from './pages/Login';
 import RegisterPage from './pages/Register';
 import HomePage from './pages/Home';
@@ -24,10 +26,10 @@ function App() {
                 <Routes>
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
-                  <Route path="/" element={<PrivateRoute><HomePage /></PrivateRoute>} />
-                  <Route path="/income" element={<PrivateRoute><IncomePage /></PrivateRoute>} />
-                  <Route path="/expenses" element={<PrivateRoute><ExpensesPage /></PrivateRoute>} />
-                  <Route path="/budget-planning" element={<PrivateRoute><BudgetPlanningPage /></PrivateRoute>} />
+                  <Route path="/" element={<PrivateRoute><NavBar></NavBar><HomePage /></PrivateRoute>} />
+                  <Route path="/income" element={<PrivateRoute><NavBar></NavBar><IncomePage /></PrivateRoute>} />
+                  <Route path="/expenses" element={<PrivateRoute><NavBar></NavBar><ExpensesPage /></PrivateRoute>} />
+                  <Route path="/budget-planning" element={<PrivateRoute><NavBar></NavBar><BudgetPlanningPage /></PrivateRoute>} />
                 </Routes>
                 <Toaster />
               </BrowserRouter>

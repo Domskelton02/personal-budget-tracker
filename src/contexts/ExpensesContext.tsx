@@ -67,7 +67,6 @@ export const ExpensesProvider = ({ children }: { children: ReactNode }) => {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        // Handle cases where the thrown object is not an Error instance
         setError('An unknown error occurred');
       }
     }
@@ -94,7 +93,6 @@ export const ExpensesProvider = ({ children }: { children: ReactNode }) => {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        // Handle cases where the thrown object is not an Error instance
         setError('An unknown error occurred');
       }
     }
@@ -114,7 +112,6 @@ export const ExpensesProvider = ({ children }: { children: ReactNode }) => {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        // Handle cases where the thrown object is not an Error instance
         setError('An unknown error occurred');
       }
     }

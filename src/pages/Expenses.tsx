@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useExpensesContext } from '../contexts/ExpensesContext';
-import { Expense, BudgetCategory } from '../types';
 import { useCategories } from '../contexts/CategoriesContext';
+import { Expense } from '../types';
 
 const ExpensesPage = () => {
-  const { expenses, addExpense, removeExpense } = useExpensesContext();
+  const { addExpense } = useExpensesContext();
   const { categories } = useCategories();
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
@@ -14,24 +14,21 @@ const ExpensesPage = () => {
   const handleAddExpense = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Basic validation
     if (!description || !amount || !categoryId || !date) {
       alert('All fields are required, including selecting a category.');
       return;
     }
 
     const newExpense: Expense = {
-      // Assuming your backend will generate IDs
+      id: 0,
       description,
       amount: parseFloat(amount),
       categoryId: Number(categoryId),
       date,
-      // Placeholder for userId, replace with actual user context or authentication mechanism
       userId: 1,
     };
 
     addExpense(newExpense);
-    // Reset form fields
     setDescription('');
     setAmount('');
     setCategoryId('');
@@ -41,39 +38,42 @@ const ExpensesPage = () => {
   return (
     <div>
       <h2>Expenses</h2>
-      <ul>
-        {expenses.map((expense) => (
-          <li key={expense.id}>
-            {expense.description} - ${expense.amount}
-            <button onClick={() => removeExpense(expense.id)}>Remove</button>
-          </li>
-        ))}
-      </ul>
       <form onSubmit={handleAddExpense}>
+        <label htmlFor="description">Description:</label>
         <input
+          id="description"
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Enter expense description"
         />
+
+        <label htmlFor="amount">Amount:</label>
         <input
+          id="amount"
           type="number"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
           placeholder="Enter amount"
         />
+
+        <label htmlFor="category">Category:</label>
         <select
+          id="category"
           value={categoryId}
-          onChange={(e) => setCategoryId(e.target.value)}
+          onChange={(e) => setCategoryId(Number(e.target.value))}
         >
           <option value="">Select a category</option>
-          {categories.map((category: BudgetCategory) => (
+          {categories.map((category) => (
             <option key={category.id} value={category.id}>
               {category.name}
             </option>
           ))}
         </select>
+
+        <label htmlFor="date">Date:</label>
         <input
+          id="date"
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
