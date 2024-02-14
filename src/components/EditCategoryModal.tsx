@@ -9,8 +9,10 @@ type EditCategoryModalProps = {
 
 export const EditCategoryModal: React.FC<EditCategoryModalProps> = ({ category, onClose }) => {
   const [name, setName] = useState(category.name);
-  const [budgetedAmount, setBudgetedAmount] = useState(category.budgetedAmount.toString());
-  const [error, setError] = useState('');
+  const [budgetedAmount, setBudgetedAmount] = useState(
+    category.budgetedAmount ? category.budgetedAmount.toString() : '0'
+  );
+    const [error, setError] = useState('');
   const { updateCategory } = useContext(BudgetPlanningContext);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -32,9 +34,11 @@ export const EditCategoryModal: React.FC<EditCategoryModalProps> = ({ category, 
       await updateCategory(updatedCategory);
       onClose(updatedCategory); // Close the modal and pass the updated category
     } catch (error) {
-      setError('Failed to update category. Please try again.');
+      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+      setError('Failed to update category. Please try again. ' + errorMessage);
       console.error('Failed to update category', error);
     }
+    
   };
 
   // Function to close the modal if the overlay is clicked

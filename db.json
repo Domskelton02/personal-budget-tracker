@@ -40,7 +40,32 @@
       "date": "2024-01-02T10:00:00Z"
     }
   ],
-  "categories": [],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Groceries"
+    },
+    {
+      "id": "2",
+      "name": "Utilities"
+    },
+    {
+      "id": "3",
+      "name": "Entertainment"
+    },
+    {
+      "id": "4",
+      "name": "Dining Out"
+    },
+    {
+      "id": "5",
+      "name": "Transportation"
+    },
+    {
+      "id": "6",
+      "name": "Savings"
+    }
+  ],
   "budgets": [
     {
       "id": "1",
@@ -79,10 +104,64 @@
       "userId": 1
     }
   ],
-  "expenses": [],
+  "expenses": [
+    {
+      "id": 0,
+      "description": "6th",
+      "amount": 6767,
+      "categoryId": 3,
+      "date": "2024-02-08",
+      "userId": 1
+    }
+  ],
   "login": [
     {
       "id": "c4ad",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "4203",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "0cbf",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "1f19",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "9206",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "9e12",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "cd47",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "9360",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "c2ec",
+      "email": "adltech02@gmail.com",
+      "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
+    },
+    {
+      "id": "5d88",
       "email": "adltech02@gmail.com",
       "password": "01a4dbb3689a4eabd3ed61aa6b2744bdd8072f35fe0b239abacae3ea80822a34"
     }
