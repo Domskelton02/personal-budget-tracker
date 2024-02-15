@@ -1,15 +1,20 @@
-import React, { useState, useContext } from 'react';
-import { BudgetPlanningContext } from '../contexts/BudgetPlanningContext';
-import { BudgetCategory } from '../types';
+import React, { useState, useContext } from "react";
+import { BudgetPlanningContext } from "../contexts/BudgetPlanningContext";
+import { BudgetCategory } from "../types";
 
 type EditCategoryProps = {
   category: BudgetCategory;
   onCancel: () => void;
 };
 
-export const EditCategory: React.FC<EditCategoryProps> = ({ category, onCancel }) => {
+export const EditCategory: React.FC<EditCategoryProps> = ({
+  category,
+  onCancel,
+}) => {
   const [name, setName] = useState(category.name);
-  const [budgetedAmount, setBudgetedAmount] = useState(category.budgetedAmount.toString());
+  const [budgetedAmount, setBudgetedAmount] = useState(
+    category.budgetedAmount.toString()
+  );
   const { updateCategory } = useContext(BudgetPlanningContext);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -25,7 +30,7 @@ export const EditCategory: React.FC<EditCategoryProps> = ({ category, onCancel }
       await updateCategory(updatedCategory);
       onCancel();
     } catch (error) {
-      console.error('Failed to update category', error);
+      console.error("Failed to update category", error);
     }
   };
 
@@ -48,7 +53,9 @@ export const EditCategory: React.FC<EditCategoryProps> = ({ category, onCancel }
         placeholder="Enter budgeted amount"
       />
       <button type="submit">Save Changes</button>
-      <button type="button" onClick={onCancel}>Cancel</button>
+      <button type="button" onClick={onCancel}>
+        Cancel
+      </button>
     </form>
   );
 };

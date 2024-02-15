@@ -7,10 +7,10 @@ import {
 } from "../utils/TelephoneInput";
 import { UserInformation } from "../types";
 import { isCityValid } from "../utils/all-cities";
-import { stateAcronyms } from '../utils/state-acronyms';
-import { StateDropdown } from '../utils/StateDropdown';
-import { ZipCodeInput } from '../utils/zipcodeInput';
-import { isZipCodeValid } from '../utils/validations';
+import { stateAcronyms } from "../utils/state-acronyms";
+import { StateDropdown } from "../utils/StateDropdown";
+import { ZipCodeInput } from "../utils/zipcodeInput";
+import { isZipCodeValid } from "../utils/validations";
 import { isValidPhoneNumber } from "../validations";
 import { registerUser } from "../services/apiService";
 
@@ -35,8 +35,8 @@ export const FunctionalForm = () => {
   const [lastNameInput, setLastNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
   const [cityInput, setCityInput] = useState("");
-  const [selectedState, setSelectedState] = useState('');
-  const [zipCode, setZipCode] = useState('');
+  const [selectedState, setSelectedState] = useState("");
+  const [zipCode, setZipCode] = useState("");
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -48,7 +48,7 @@ export const FunctionalForm = () => {
     setEmailInput("");
     setCityInput("");
     setSelectedState("");
-    setZipCode('');
+    setZipCode("");
     setPhoneNumberInput(["", "", "", ""]);
     setUsernameInput("");
     setPasswordInput("");
@@ -68,7 +68,7 @@ export const FunctionalForm = () => {
   const isEmailInputValid = isEmailValid(emailInput);
   const isCityInputValid = isCityValid(cityInput);
   const isStateValid = stateAcronyms.includes(selectedState);
-  const zipCodeIsValid = isZipCodeValid(zipCode)
+  const zipCodeIsValid = isZipCodeValid(zipCode);
   const isPhoneNumberValid = isValidPhoneNumber(phoneNumberInput.join(""));
   const isUsernameValid = usernameInput.length >= 3;
   const isPasswordValid = passwordInput.length >= 6;

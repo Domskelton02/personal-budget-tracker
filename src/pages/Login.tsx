@@ -1,12 +1,12 @@
-import React, { useState, FormEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
-import { useAuth } from '../hooks/useAuth';
-import { isEmailValid } from '../utils/validations';
+import React, { useState, FormEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useAuth } from "../hooks/useAuth";
+import { isEmailValid } from "../utils/validations";
 
 const LoginPage: React.FC = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
   const { login } = useAuth();
 
@@ -14,20 +14,20 @@ const LoginPage: React.FC = () => {
     e.preventDefault();
 
     if (!isEmailValid(email)) {
-      toast.error('Please enter a valid email address');
+      toast.error("Please enter a valid email address");
       return;
     }
-    if (!password || password.length < 6) { // Example: Minimum length validation
-      toast.error('Password must be at least 6 characters long');
+    if (!password || password.length < 6) {
+      toast.error("Password must be at least 6 characters long");
       return;
     }
 
     try {
       await login(email, password);
-      toast.success('Logged in successfully');
-      navigate('/');
+      toast.success("Logged in successfully");
+      navigate("/");
     } catch (error) {
-      toast.error((error as Error).message || 'Failed to log in');
+      toast.error((error as Error).message || "Failed to log in");
     }
   };
 
@@ -57,9 +57,13 @@ const LoginPage: React.FC = () => {
             required
           />
         </div>
-        <button type="submit" className="login-button">Login</button>
+        <button type="submit" className="login-button">
+          Login
+        </button>
       </form>
-      <p>Don't have an account? <Link to="/register">Register here</Link></p>
+      <p>
+        Don't have an account? <Link to="/register">Register here</Link>
+      </p>
     </div>
   );
 };

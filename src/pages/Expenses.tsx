@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { useExpensesContext } from '../contexts/ExpensesContext';
-import { useCategories } from '../contexts/CategoriesContext';
-import { Expense } from '../types';
+import React, { useState } from "react";
+import { useExpensesContext } from "../contexts/ExpensesContext";
+import { useCategories } from "../contexts/CategoriesContext";
+import { Expense } from "../types";
 
 const ExpensesPage = () => {
   const { addExpense } = useExpensesContext();
   const { categories } = useCategories();
-  const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState('');
-  const [categoryId, setCategoryId] = useState<number | ''>('');
-  const [date, setDate] = useState('');
+  const [description, setDescription] = useState("");
+  const [amount, setAmount] = useState("");
+  const [categoryId, setCategoryId] = useState<number | "">("");
+  const [date, setDate] = useState("");
 
   const handleAddExpense = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!description || !amount || !categoryId || !date) {
-      alert('All fields are required, including selecting a category.');
+      alert("All fields are required, including selecting a category.");
       return;
     }
 
@@ -29,10 +29,10 @@ const ExpensesPage = () => {
     };
 
     addExpense(newExpense);
-    setDescription('');
-    setAmount('');
-    setCategoryId('');
-    setDate('');
+    setDescription("");
+    setAmount("");
+    setCategoryId("");
+    setDate("");
   };
 
   return (

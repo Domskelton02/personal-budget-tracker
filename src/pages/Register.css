@@ -1,65 +1,59 @@
 form label {
-    font-size: 20px;
-    padding-left: 4px;
-    margin-right: 10px;
-    flex: 1;
-  }
-  
-  form input {
-    font-size: 15px;
-    padding-left: 4px;
-    width: 300px;
-  }
-  
-  form input:not([type="submit"]) {
-    margin-right: 10px;
-    flex: 2;
-  }
-  
-  input[type="submit"] {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    font-size: 1em;
-    font-weight: 500;
-    background-color: #1a1a1a;
-    color: white;
-    cursor: pointer;
-    transition: border-color 0.25s;
-  }
-  
-  input[type="submit"]:hover {
-    border-color: #646cff;
-  }
+  font-size: 20px;
+  padding-left: 4px;
+  margin-right: 10px;
+  flex: 1;
+}
 
+form input {
+  font-size: 15px;
+  padding-left: 4px;
+  width: 300px;
+}
 
-  
-  #phone-input-1 {
-    width: 30px;
-  }
-  #phone-input-2 {
-    width: 30px;
-  }
-  #phone-input-3 {
-    width: 30px;
-  }
-  #phone-input-4 {
-    width: 30px;
-  }
-  
-  #phone-input-1,
-  #phone-input-2,
-  #phone-input-3 {
-    text-align: center;
-  }
-  
-  #phone-input-wrap {
-    display: flex;
-    justify-content: space-between;
-    flex: 2;
-    width: 400px;
-  }
-  
+form input:not([type="submit"]) {
+  margin-right: 10px;
+  flex: 2;
+}
 
-  
-  
+input[type="submit"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: #1a1a1a;
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+input[type="submit"]:hover {
+  border-color: #646cff;
+}
+
+#phone-input-1 {
+  width: 30px;
+}
+#phone-input-2 {
+  width: 30px;
+}
+#phone-input-3 {
+  width: 30px;
+}
+#phone-input-4 {
+  width: 30px;
+}
+
+#phone-input-1,
+#phone-input-2,
+#phone-input-3 {
+  text-align: center;
+}
+
+#phone-input-wrap {
+  display: flex;
+  justify-content: space-between;
+  flex: 2;
+  width: 400px;
+}

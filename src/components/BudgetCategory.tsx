@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
-import { BudgetCategory as BudgetCategoryType } from '../types';
-import { BudgetPlanningContext } from '../contexts/BudgetPlanningContext';
-import { EditCategoryModal } from './EditCategoryModal';
+import React, { useContext, useState } from "react";
+import { BudgetCategory as BudgetCategoryType } from "../types";
+import { BudgetPlanningContext } from "../contexts/BudgetPlanningContext";
+import { EditCategoryModal } from "./EditCategoryModal";
 type Props = {
   category: BudgetCategoryType;
 };
@@ -28,10 +28,7 @@ export const BudgetCategory: React.FC<Props> = ({ category }) => {
       <button onClick={() => deleteCategory(category.id)}>Delete</button>
 
       {isEditing && (
-        <EditCategoryModal
-          category={category}
-          onClose={handleCloseModal}
-        />
+        <EditCategoryModal category={category} onClose={handleCloseModal} />
       )}
     </div>
   );

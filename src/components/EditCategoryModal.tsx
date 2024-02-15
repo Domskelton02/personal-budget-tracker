@@ -1,26 +1,29 @@
-import React, { useState, useContext } from 'react';
-import { BudgetCategory } from '../types';
-import { BudgetPlanningContext } from '../contexts/BudgetPlanningContext';
+import React, { useState, useContext } from "react";
+import { BudgetCategory } from "../types";
+import { BudgetPlanningContext } from "../contexts/BudgetPlanningContext";
 
 type EditCategoryModalProps = {
   category: BudgetCategory;
   onClose: (updatedCategory?: BudgetCategory) => void;
 };
 
-export const EditCategoryModal: React.FC<EditCategoryModalProps> = ({ category, onClose }) => {
+export const EditCategoryModal: React.FC<EditCategoryModalProps> = ({
+  category,
+  onClose,
+}) => {
   const [name, setName] = useState(category.name);
   const [budgetedAmount, setBudgetedAmount] = useState(
-    category.budgetedAmount ? category.budgetedAmount.toString() : '0'
+    category.budgetedAmount ? category.budgetedAmount.toString() : "0"
   );
-    const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { updateCategory } = useContext(BudgetPlanningContext);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setError('');
+    setError("");
 
     if (!name.trim()) {
-      setError('Category name is required.');
+      setError("Category name is required.");
       return;
     }
 
@@ -34,11 +37,11 @@ export const EditCategoryModal: React.FC<EditCategoryModalProps> = ({ category, 
       await updateCategory(updatedCategory);
       onClose(updatedCategory);
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-      setError('Failed to update category. Please try again. ' + errorMessage);
-      console.error('Failed to update category', error);
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      setError("Failed to update category. Please try again. " + errorMessage);
+      console.error("Failed to update category", error);
     }
-    
   };
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -70,11 +73,12 @@ export const EditCategoryModal: React.FC<EditCategoryModalProps> = ({ category, 
           />
           <div className="modal-actions">
             <button type="submit">Save Changes</button>
-            <button type="button" onClick={() => onClose()}>Cancel</button>
+            <button type="button" onClick={() => onClose()}>
+              Cancel
+            </button>
           </div>
         </form>
       </div>
     </div>
   );
 };
-

@@ -1,7 +1,7 @@
-import { useState, useCallback, useContext } from 'react';
+import { useState, useCallback, useContext } from "react";
 import { BudgetPlanningContext } from "../contexts/BudgetPlanningContext";
-import { BudgetCategory } from '../types';
-import { BudgetPlanningService } from '../services/BudgetPlanningService';
+import { BudgetCategory } from "../types";
+import { BudgetPlanningService } from "../services/BudgetPlanningService";
 
 export const useBudgetPlanning = () => {
   const { categories, setCategories } = useContext(BudgetPlanningContext);
@@ -21,11 +21,16 @@ export const useBudgetPlanning = () => {
   }, [setCategories]);
 
   const addCategory = useCallback(
-    async (newCategory: Omit<BudgetCategory, 'id'>) => {
+    async (newCategory: Omit<BudgetCategory, "id">) => {
       setIsLoading(true);
       try {
-        const addedCategory = await BudgetPlanningService.addCategory(newCategory as NewBudgetCategory);
-        setCategories((prevCategories: BudgetCategory[]) => [...prevCategories, addedCategory]);
+        const addedCategory = await BudgetPlanningService.addCategory(
+          newCategory as BudgetCategory
+        );
+        setCategories((prevCategories: BudgetCategory[]) => [
+          ...prevCategories,
+          addedCategory,
+        ]);
       } catch (err) {
         setError((err as Error).message);
       } finally {
