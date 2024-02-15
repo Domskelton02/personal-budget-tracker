@@ -23,6 +23,9 @@ export type BudgetCategory = {
 
 // NewBudgetCategory type for creating a category, which does not include an 'id'
 export type NewBudgetCategory = Omit<BudgetCategory, 'id'>;
+// NewBudget type for creating a budget, which does not include an 'id'
+export type NewBudget = Omit<Budget, 'id'>;
+
 
 // Represents an expense recorded by a user
 export type Expense = {

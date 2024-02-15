@@ -4,7 +4,7 @@ import { ProxyOptions } from 'vite';
 
 // Define the proxy options
 const proxy: ProxyOptions = {
-  target: 'http://localhost:3000', // Your backend server URL
+  target: 'http://localhost:3000',
   changeOrigin: true,
   secure: false,
   rewrite: (path) => path.replace(/^\/api/, '')

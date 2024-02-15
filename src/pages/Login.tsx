@@ -13,7 +13,6 @@ const LoginPage: React.FC = () => {
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Enhanced client-side validation
     if (!isEmailValid(email)) {
       toast.error('Please enter a valid email address');
       return;
@@ -28,7 +27,6 @@ const LoginPage: React.FC = () => {
       toast.success('Logged in successfully');
       navigate('/');
     } catch (error) {
-      // Assuming error handling in login function is appropriate
       toast.error((error as Error).message || 'Failed to log in');
     }
   };

@@ -17,7 +17,7 @@ export const EditCategoryModal: React.FC<EditCategoryModalProps> = ({ category, 
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setError(''); // Clear any existing errors
+    setError('');
 
     if (!name.trim()) {
       setError('Category name is required.');
@@ -32,7 +32,7 @@ export const EditCategoryModal: React.FC<EditCategoryModalProps> = ({ category, 
 
     try {
       await updateCategory(updatedCategory);
-      onClose(updatedCategory); // Close the modal and pass the updated category
+      onClose(updatedCategory);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
       setError('Failed to update category. Please try again. ' + errorMessage);
@@ -41,7 +41,6 @@ export const EditCategoryModal: React.FC<EditCategoryModalProps> = ({ category, 
     
   };
 
-  // Function to close the modal if the overlay is clicked
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       onClose();

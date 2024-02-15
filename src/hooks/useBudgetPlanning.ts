@@ -5,8 +5,8 @@ import { BudgetPlanningService } from '../services/BudgetPlanningService';
 
 export const useBudgetPlanning = () => {
   const { categories, setCategories } = useContext(BudgetPlanningContext);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchCategories = useCallback(async () => {
     setIsLoading(true);
@@ -14,7 +14,7 @@ export const useBudgetPlanning = () => {
       const fetchedCategories = await BudgetPlanningService.getCategories();
       setCategories(fetchedCategories);
     } catch (err) {
-      setError(err);
+      setError((err as Error).message);
     } finally {
       setIsLoading(false);
     }
@@ -24,10 +24,10 @@ export const useBudgetPlanning = () => {
     async (newCategory: Omit<BudgetCategory, 'id'>) => {
       setIsLoading(true);
       try {
-        const addedCategory = await BudgetPlanningService.addCategory(newCategory);
-        setCategories((prevCategories) => [...prevCategories, addedCategory]);
+        const addedCategory = await BudgetPlanningService.addCategory(newCategory as NewBudgetCategory);
+        setCategories((prevCategories: BudgetCategory[]) => [...prevCategories, addedCategory]);
       } catch (err) {
-        setError(err);
+        setError((err as Error).message);
       } finally {
         setIsLoading(false);
       }
@@ -40,13 +40,13 @@ export const useBudgetPlanning = () => {
       setIsLoading(true);
       try {
         await BudgetPlanningService.updateCategory(id, updatedCategory);
-        setCategories((prevCategories) =>
+        setCategories((prevCategories: BudgetCategory[]) =>
           prevCategories.map((category) =>
             category.id === id ? updatedCategory : category
           )
         );
       } catch (err) {
-        setError(err);
+        setError((err as Error).message);
       } finally {
         setIsLoading(false);
       }
@@ -59,11 +59,11 @@ export const useBudgetPlanning = () => {
       setIsLoading(true);
       try {
         await BudgetPlanningService.deleteCategory(id);
-        setCategories((prevCategories) =>
+        setCategories((prevCategories: BudgetCategory[]) =>
           prevCategories.filter((category) => category.id !== id)
         );
       } catch (err) {
-        setError(err);
+        setError((err as Error).message);
       } finally {
         setIsLoading(false);
       }
