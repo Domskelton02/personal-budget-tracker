@@ -13,7 +13,6 @@ import IncomePage from './pages/Income';
 import ExpensesPage from './pages/Expenses';
 import BudgetPlanningPage from './pages/BudgetPlanning';
 import PrivateRoute from './components/PrivateRoute';
-import './index.css';
 
 function App() {
   return (
